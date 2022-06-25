@@ -1,1 +1,60 @@
-<p>new-message works!</p>
+<div class="container" fxLayoutAlign="center center">
+  <div class="container-fluid" fxLayout="column" fxLayoutAlign="center center">
+    <mat-toolbar color="primary"> New Message </mat-toolbar>
+    <form
+      novalidate
+      [formGroup]="messageForm"
+      #mForm="ngForm"
+      (ngSubmit)="onSubmit()"
+      fxLayout="column"
+      fxLayoutAlign="center center"
+    >
+      <mat-spinner *ngIf="loading" class="spinner"></mat-spinner>
+      <mat-form-field>
+        <mat-label>Title</mat-label>
+        <input matInput formControlName="title" type="text" required />
+        <mat-error
+          *ngIf="
+            messageForm.get('title')?.hasError('required') &&
+            messageForm.get('title')?.touched
+          "
+        >
+          Title is required.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Author</mat-label>
+        <input matInput formControlName="author" type="text" required />
+        <mat-error
+          *ngIf="
+            messageForm.get('author')?.hasError('required') &&
+            messageForm.get('author')?.touched
+          "
+        >
+          Author is required.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Image Link</mat-label>
+        <input matInput formControlName="imageLink" type="text" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Description</mat-label>
+        <input matInput formControlName="desc" type="text" />
+      </mat-form-field>
+
+      <button
+        [disabled]="!messageForm.valid"
+        type="submit"
+        mat-raised-button
+        color="primary"
+      >
+        Send Message
+      </button>
+      <p *ngIf="errMsg" class="errMsg">{{ errMsg }}</p>
+    </form>
+  </div>
+</div>
