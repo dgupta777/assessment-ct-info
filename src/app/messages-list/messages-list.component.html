@@ -5,11 +5,11 @@
       <button mat-raised-button routerLink="/new-message">New Message</button>
     </div>
 
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <table mat-table [dataSource]="messagesList" class="mat-elevation-z8">
       <ng-container matColumnDef="launchDate">
         <th mat-header-cell *matHeaderCellDef>Launch Date</th>
         <td class="date" mat-cell *matCellDef="let element">
-          {{ element.launchDate | date: "longDate" }}
+          {{ element.LaunchDate | date: "longDate" }}
         </td>
       </ng-container>
 
@@ -23,12 +23,15 @@
       <ng-container matColumnDef="author">
         <th mat-header-cell *matHeaderCellDef>Author</th>
         <td class="author" mat-cell *matCellDef="let element">
-          {{ element.author }}
+          {{ element.Author }}
         </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell">No messages to show.</td>
+      </tr>
     </table>
   </div>
 </div>

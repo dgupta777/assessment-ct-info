@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 // Material Modules
 import { MatIconModule } from '@angular/material/icon';
@@ -17,6 +18,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 // Services
+import { MessageService } from './services/message.service';
 
 // Components
 import { AppComponent } from './app.component';
@@ -25,7 +27,12 @@ import { NewMessageComponent } from './new-message/new-message.component';
 import { HeaderComponent } from './header/header.component';
 
 @NgModule({
-  declarations: [AppComponent, MessagesListComponent, NewMessageComponent, HeaderComponent],
+  declarations: [
+    AppComponent,
+    MessagesListComponent,
+    NewMessageComponent,
+    HeaderComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -33,6 +40,7 @@ import { HeaderComponent } from './header/header.component';
     FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     MatIconModule,
     MatButtonModule,
     MatTableModule,
@@ -42,7 +50,7 @@ import { HeaderComponent } from './header/header.component';
     MatSnackBarModule,
     MatToolbarModule,
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
