@@ -5,7 +5,14 @@
       <button mat-raised-button routerLink="/new-message">New Message</button>
     </div>
 
-    <table mat-table [dataSource]="messagesList" class="mat-elevation-z8">
+    <mat-spinner *ngIf="loading" class="spinner"></mat-spinner>
+
+    <table
+      *ngIf="!loading"
+      mat-table
+      [dataSource]="messagesList"
+      class="mat-elevation-z8"
+    >
       <ng-container matColumnDef="launchDate">
         <th mat-header-cell *matHeaderCellDef>Launch Date</th>
         <td class="date" mat-cell *matCellDef="let element">

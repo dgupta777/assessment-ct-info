@@ -12,16 +12,19 @@ export class MessagesListComponent implements OnInit, OnDestroy {
   messagesList: Message[] = [];
   displayedColumns: string[] = ['launchDate', 'title', 'author'];
   msgSubscription!: Subscription;
+  loading = true;
 
   constructor(private messageService: MessageService) {}
 
   ngOnInit(): void {
+    this.loading = true;
     this.msgSubscription = this.messageService
       .getMessages()
       .subscribe((data) => {
         this.messagesList = Object.values(
           JSON.parse(Object.values(data)[0])
         )[0] as Message[];
+        this.loading = false;
       });
   }
 
