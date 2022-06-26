@@ -26,7 +26,6 @@ export class NewMessageComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.createForm();
-    this.openSnackBar();
   }
 
   ngOnDestroy(): void {
@@ -36,15 +35,21 @@ export class NewMessageComponent implements OnInit, OnDestroy {
   createForm() {
     this.messageForm = this.fb.group({
       title: ['', Validators.required],
-      launchdate: [new Date(), Validators.required],
+      launchdate: [''],
       author: ['', Validators.required],
-      image_link: '',
+      image_link: [
+        '',
+        Validators.pattern(
+          /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/
+        ),
+      ],
       description: '',
     });
   }
 
   onSubmit() {
     this.loading = true;
+    this.messageForm.value.launchdate = new Date();
     this.msgSubscription = this.messageService
       .postMessage(this.messageForm.value)
       .subscribe(

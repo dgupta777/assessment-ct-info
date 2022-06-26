@@ -41,11 +41,19 @@
       <mat-form-field>
         <mat-label>Image Link</mat-label>
         <input matInput formControlName="image_link" type="text" />
+        <mat-error *ngIf="messageForm.get('image_link')?.hasError('pattern')">
+          Enter a valid URL.
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field>
         <mat-label>Description</mat-label>
-        <input matInput formControlName="description" type="text" />
+        <textarea
+          matInput
+          formControlName="description"
+          type="text"
+          rows="3"
+        ></textarea>
       </mat-form-field>
 
       <button
