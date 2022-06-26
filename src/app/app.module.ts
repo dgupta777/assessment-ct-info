@@ -22,9 +22,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { AppComponent } from './app.component';
 import { MessagesListComponent } from './messages-list/messages-list.component';
 import { NewMessageComponent } from './new-message/new-message.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
-  declarations: [AppComponent, MessagesListComponent, NewMessageComponent],
+  declarations: [AppComponent, MessagesListComponent, NewMessageComponent, HeaderComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
