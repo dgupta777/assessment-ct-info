@@ -26,6 +26,7 @@ export class NewMessageComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.createForm();
+    this.openSnackBar();
   }
 
   ngOnDestroy(): void {
@@ -69,8 +70,8 @@ export class NewMessageComponent implements OnInit, OnDestroy {
 
   openSnackBar() {
     this.snackBar.open('Message sent successfully.', '', {
-      horizontalPosition: 'right',
-      verticalPosition: 'top',
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom',
       duration: 3000,
       panelClass: ['snakeBarClass'],
     });

@@ -1,6 +1,8 @@
-<div class="container" fxLayoutAlign="center center">
+<div class="container" fxLayout="column" fxLayoutAlign="center center">
+  <mat-toolbar color="primary" fxLayoutAlign="center center">
+    New Message
+  </mat-toolbar>
   <div class="container-fluid" fxLayout="column" fxLayoutAlign="center center">
-    <mat-toolbar color="primary"> New Message </mat-toolbar>
     <form
       novalidate
       [formGroup]="messageForm"
